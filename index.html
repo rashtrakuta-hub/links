@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anirudh Kanisetti</title>
+<meta name="description" content="Books, latest Thinking Medieval column, upcoming events, and all columns, videos and podcasts by public historian Anirudh Kanisetti.">
+<meta property="og:title" content="Anirudh Kanisetti">
+<meta property="og:description" content="Books, latest column, upcoming events, and every column, video and podcast.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Lato:wght@300;400&display=swap">
+<style>
+/* Layout: one narrow column matching anirudhkanisetti.com — dark slate-green ground, Forum serif, khaki-gold accents, lowercase Lato labels. Single dark look by design, to sit inside the site. */
+:root{
+  --bg:#293A37;        /* site page ground */
+  --surface:#2F4842;   /* site panel green */
+  --surface-hi:#37504B;
+  --ink:#D9D3C0;       /* warm parchment text */
+  --muted:#9C9E80;     /* site nav khaki */
+  --rule:#435E58;
+  --gold:#B0A37D;      /* site heading gold */
+  --link:#C2AE8E;
+  --display:"Forum", "Cormorant Garamond", Georgia, serif;
+  --body:"Forum", Georgia, "Times New Roman", serif;
+  --label:"Lato", "Helvetica Neue", Arial, sans-serif;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.5;padding-inline:16px;padding-block:48px 64px}
+.wrap{max-width:580px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+header{display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,11vw,56px);line-height:1.05;margin:0;color:var(--gold);text-wrap:balance}
+.bio{margin:0;color:var(--muted);max-width:48ch;font-size:18px;line-height:1.5}
+.bio i{color:var(--link)}
+.social{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;font-family:var(--label);font-weight:300;font-size:15px;letter-spacing:.05em;margin-top:4px}
+.social a{text-decoration:none;color:var(--muted)}
+.social a:hover{color:var(--gold)}
+.enq{font-family:var(--label);font-weight:400;font-size:14px;letter-spacing:.05em;text-decoration:none;color:var(--gold);border:1px solid var(--gold);border-radius:2px;padding:8px 20px;margin-top:6px;transition:background .15s}
+.enq:hover{background:var(--surface-hi)}
+
+h2{font-family:var(--label);font-weight:300;font-size:15px;letter-spacing:.06em;text-transform:lowercase;color:var(--muted);margin:0 0 16px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+.pins{display:flex;flex-direction:column;gap:12px}
+.pin{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 16px;padding:18px 22px;background:var(--surface);border:1px solid var(--rule);border-radius:4px;text-decoration:none;transition:background .15s,border-color .15s}
+.pin:hover{background:var(--surface-hi);border-color:var(--gold)}
+.pin .k{font-family:var(--label);font-weight:300;font-size:14px;letter-spacing:.03em;color:var(--muted);grid-column:1/-1}
+.pin .t{font-family:var(--display);font-size:26px;line-height:1.15;color:var(--gold);min-width:0;text-wrap:balance}
+.pin .s{grid-column:1;font-size:16px;color:var(--ink);opacity:.8;min-width:0}
+.pin .go{grid-column:2;grid-row:2/4;font-family:var(--label);font-weight:400;font-size:13px;letter-spacing:.04em;color:var(--link);white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+.pin.latest .t{font-size:21px;line-height:1.25;color:var(--ink)}
+
+.events{display:flex;flex-direction:column}
+.ev{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--rule)}
+.ev:last-child{border-bottom:1px solid var(--rule)}
+.ev time{font-family:var(--label);font-weight:300;font-size:14px;color:var(--gold);line-height:1.35;font-variant-numeric:tabular-nums}
+.ev .n{font-size:19px}
+.ev .p{font-size:16px;color:var(--muted)}
+.ev a{color:var(--link);font-size:15px;text-underline-offset:3px}
+.empty{padding:18px 22px;border:1px dashed var(--rule);border-radius:4px;color:var(--muted);font-size:17px;margin:0}
+
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tab{font-family:var(--label);font-weight:300;font-size:15px;letter-spacing:.04em;text-transform:lowercase;background:transparent;color:var(--muted);border:1px solid var(--rule);border-radius:2px;padding:6px 14px;cursor:pointer}
+.tab:hover{color:var(--gold)}
+.tab[aria-selected="true"]{background:var(--surface-hi);color:var(--gold);border-color:var(--gold)}
+.tab .c{font-size:12px;opacity:.75;margin-left:6px}
+.search{width:100%;font-family:var(--body);font-size:17px;padding:10px 14px;border-radius:2px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);margin-bottom:8px}
+.search::placeholder{color:var(--muted)}
+
+.yr{font-family:var(--display);font-size:24px;margin:24px 0 2px;color:var(--gold)}
+.list{list-style:none;margin:0;padding:0}
+.list li a{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);text-decoration:none;align-items:baseline}
+.list li a:hover .lt{color:var(--gold)}
+.list .ld{font-family:var(--label);font-weight:300;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list .lt{min-width:0;font-size:17px;line-height:1.4}
+.pod{display:flex;flex-direction:column;gap:2px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.pod .pt{font-size:20px;color:var(--gold)}
+.pod .pn{font-family:var(--label);font-weight:300;font-size:14px;color:var(--muted)}
+.pod .pl{display:flex;gap:16px;font-size:16px;margin-top:4px}
+.pod .pl a{color:var(--link);text-underline-offset:3px}
+.none{color:var(--muted);padding:14px 0}
+.none a{color:var(--link)}
+
+footer{font-family:var(--label);font-weight:300;font-size:13px;letter-spacing:.04em;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){.pin{transition:none}}
+</style>
+<style>html{background:var(--bg)}body{margin:0}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <h1>Anirudh Kanisetti</h1>
+    <p class="bio">Public historian of ancient and early medieval India. Author of <i>Lords of Earth and Sea</i> and <i>Lords of the Deccan</i>. Winner of the Sahitya Akademi Yuva Puraskar. Writes the Thinking Medieval column for ThePrint.</p>
+    <nav class="social" aria-label="Elsewhere">
+      <a href="https://www.anirudhkanisetti.com" target="_blank" rel="noopener">Back to website</a>
+      <a href="https://x.com/AKanisetti" target="_blank" rel="noopener">X</a>
+      <a href="https://www.instagram.com/aniruddhadevaraya/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/anirudhkanisetti/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <a class="enq" id="enq" href="https://www.anirudhkanisetti.com/" target="_blank" rel="noopener">Business enquiries</a>
+  </header>
+
+  <section aria-labelledby="h-pinned">
+    <h2 id="h-pinned">Pinned</h2>
+    <div class="pins">
+      <a class="pin" href="https://www.amazon.in/Lords-Earth-Sea-History-Empire-ebook/dp/B0CYCP3TX1" target="_blank" rel="noopener">
+        <span class="k">My newest book (2025)</span>
+        <span class="t">Lords of Earth and Sea</span>
+        <span class="s">A History of the Chola Empire</span>
+        <span class="go">Amazon.in →</span>
+      </a>
+      <a class="pin" href="https://www.amazon.in/dp/9353451604" target="_blank" rel="noopener">
+        <span class="k">My award-winning debut (2022)</span>
+        <span class="t">Lords of the Deccan</span>
+        <span class="s">Southern India from the Chalukyas to the Cholas</span>
+        <span class="go">Amazon.in →</span>
+      </a>
+      <a class="pin latest" id="latest" href="https://theprint.in/author/anirudh-kanisetti/" target="_blank" rel="noopener">
+        <span class="k">My latest Thinking Medieval Column</span>
+        <span class="t" id="latest-t">Read the newest column on ThePrint</span>
+        <span class="s" id="latest-d">ThePrint</span>
+        <span class="go">Read →</span>
+      </a>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-events">
+    <h2 id="h-events">Upcoming events</h2>
+    <div class="events" id="events"><p class="empty">Talks, festivals and book events will be listed here as they are announced.</p></div>
+  </section>
+
+  <section aria-labelledby="h-archive">
+    <h2 id="h-archive">Columns, videos &amp; podcasts</h2>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-columns" aria-selected="true" data-k="columns">Columns<span class="c" id="n-columns"></span></button>
+      <button class="tab" role="tab" id="tab-videos" aria-selected="false" data-k="videos">Videos<span class="c" id="n-videos"></span></button>
+      <button class="tab" role="tab" id="tab-podcasts" aria-selected="false" data-k="podcasts">Podcasts<span class="c" id="n-podcasts"></span></button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Search by title — Cholas, Kashmir, Buddhism…" aria-label="Search titles">
+    <div id="panel"><p class="none">Loading the archive…</p></div>
+  </section>
+
+  <footer id="foot">Updated weekly</footer>
+</div>
+
+<script>
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmt=d=>{const [y,m,day]=d.split("-");return `${+day} ${MONTHS[+m-1]} ${y}`};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let DATA=null,tab="columns";
+try{const h=location.hash.slice(1);if(["columns","videos","podcasts"].includes(h))tab=h}catch(e){}
+
+function render(){
+  const panel=document.getElementById("panel");
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===tab));
+  document.getElementById("q").hidden = tab==="podcasts";
+  if(!DATA){return}
+  const match=t=>!q||t.toLowerCase().includes(q);
+  let html="";
+  if(tab==="columns"||tab==="videos"){
+    const items=(tab==="columns"?DATA.columns.map(c=>({t:c.title,u:c.url,y:c.date.slice(0,4),d:c.date})):DATA.videos.map(v=>({t:v.title,u:v.url,y:String(v.year)}))).filter(i=>match(i.t));
+    let yr="";
+    for(const i of items){
+      if(i.y!==yr){if(yr)html+="</ul>";yr=i.y;html+=`<div class="yr">${esc(yr)}</div><ul class="list">`}
+      const lead=i.d?fmt(i.d).split(" ").slice(0,2).join(" "):"▶";
+      html+=`<li><a href="${esc(i.u)}" target="_blank" rel="noopener"><span class="ld">${esc(lead)}</span><span class="lt">${esc(i.t)}</span></a></li>`;
+    }
+    if(yr)html+="</ul>";
+    if(!items.length)html=`<p class="none">No ${tab} match “${esc(q)}”.</p>`;
+  } else {
+    for(const p of DATA.podcasts){
+      html+=`<div class="pod"><span class="pt">${esc(p.title)}</span><span class="pn">${esc(p.note||"")}</span><span class="pl"><a href="${esc(p.url)}" target="_blank" rel="noopener">Listen →</a>${p.alt?`<a href="${esc(p.alt.url)}" target="_blank" rel="noopener">${esc(p.alt.label)} →</a>`:""}</span></div>`;
+    }
+  }
+  panel.innerHTML=html;
+}
+
+function renderStatic(){
+  const c=DATA.columns[0];
+  if(c){const a=document.getElementById("latest");a.href=c.url;document.getElementById("latest-t").textContent=c.title;document.getElementById("latest-d").textContent="ThePrint · "+fmt(c.date)}
+  const today=new Date().toISOString().slice(0,10);
+  const ev=(DATA.events||[]).filter(e=>(e.end||e.date)>=today).sort((a,b)=>a.date.localeCompare(b.date));
+  const box=document.getElementById("events");
+  if(ev.length){
+    box.innerHTML=ev.map(e=>{const [y,m,d]=e.date.split("-");return `<div class="ev"><time datetime="${esc(e.date)}">${+d} ${MONTHS[+m-1]}<br>${y}</time><div><div class="n">${esc(e.title)}</div><div class="p">${esc([e.place,e.time].filter(Boolean).join(" · "))}</div>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">Details →</a>`:""}</div></div>`}).join("");
+  }
+  document.getElementById("n-columns").textContent=DATA.columns.length;
+  document.getElementById("n-videos").textContent=DATA.videos.length;
+  document.getElementById("n-podcasts").textContent=DATA.podcasts.length;
+  document.getElementById("foot").textContent="Updated weekly · last updated "+fmt(DATA.updated);
+}
+
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.k;render()}));
+document.getElementById("q").addEventListener("input",render);
+render();
+fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{DATA=d;renderStatic();render()})
+  .catch(()=>{document.getElementById("panel").innerHTML='<p class="none">The archive didn’t load. Refresh the page to try again, or browse <a href="https://theprint.in/author/anirudh-kanisetti/" target="_blank" rel="noopener">all columns on ThePrint</a>.</p>'});
+</script>
+
+</body>
+</html>
